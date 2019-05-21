@@ -1,0 +1,55 @@
+<% was_validated = part.errors.any? %>
+
+<% form_html_options = { novalidate: true, class: "mb-3" } %>
+
+<%= form_for(part, html: form_html_options) do |f| %>
+  <div class="form-group">
+    <% name_class = "form-control" %>
+    <% name_was_invalid = part.errors.include?(:name) %>
+
+    <% if was_validated %>
+      <% if name_was_invalid %>
+        <% name_class << " is-invalid" %>
+      <% else %>
+        <% name_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :name %>
+
+    <%= f.text_field :name, class: name_class, placeholder: "Enter name" %>
+    <% if name_was_invalid %>
+      <% part.errors.full_messages_for(:name).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="form-group">
+    <% car_class = "form-control" %>
+    <% car_was_invalid = part.errors.include?(:car) %>
+
+    <% if was_validated %>
+      <% if car_was_invalid %>
+        <% car_class << " is-invalid" %>
+      <% else %>
+        <% car_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :car %>
+
+    <%= f.text_field :car, class: car_class, placeholder: "Enter car" %>
+    <% if car_was_invalid %>
+      <% part.errors.full_messages_for(:car).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
+  <%= f.button class: "btn btn-outline-secondary btn-block" %>
+<% end %>

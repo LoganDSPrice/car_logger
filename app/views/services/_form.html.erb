@@ -1,0 +1,127 @@
+<% was_validated = service.errors.any? %>
+
+<% form_html_options = { novalidate: true, class: "mb-3" } %>
+
+<%= form_for(service, html: form_html_options) do |f| %>
+  <div class="form-group">
+    <% cost_class = "form-control" %>
+    <% cost_was_invalid = service.errors.include?(:cost) %>
+
+    <% if was_validated %>
+      <% if cost_was_invalid %>
+        <% cost_class << " is-invalid" %>
+      <% else %>
+        <% cost_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :cost %>
+
+    <%= f.text_field :cost, class: cost_class, placeholder: "Enter cost" %>
+    <% if cost_was_invalid %>
+      <% service.errors.full_messages_for(:cost).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="form-group">
+    <% description_class = "form-control" %>
+    <% description_was_invalid = service.errors.include?(:description) %>
+
+    <% if was_validated %>
+      <% if description_was_invalid %>
+        <% description_class << " is-invalid" %>
+      <% else %>
+        <% description_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :description %>
+
+    <%= f.text_field :description, class: description_class, placeholder: "Enter description" %>
+    <% if description_was_invalid %>
+      <% service.errors.full_messages_for(:description).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="form-group">
+    <% notes_class = "form-control" %>
+    <% notes_was_invalid = service.errors.include?(:notes) %>
+
+    <% if was_validated %>
+      <% if notes_was_invalid %>
+        <% notes_class << " is-invalid" %>
+      <% else %>
+        <% notes_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :notes %>
+
+    <%= f.text_area :notes, class: notes_class, placeholder: "Enter notes" %>
+    <% if notes_was_invalid %>
+      <% service.errors.full_messages_for(:notes).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="form-group">
+    <% part_class = "form-control" %>
+    <% part_was_invalid = service.errors.include?(:part) %>
+
+    <% if was_validated %>
+      <% if part_was_invalid %>
+        <% part_class << " is-invalid" %>
+      <% else %>
+        <% part_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :part %>
+
+    <%= f.text_field :part, class: part_class, placeholder: "Enter part" %>
+    <% if part_was_invalid %>
+      <% service.errors.full_messages_for(:part).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="form-group">
+    <% shop_visit_class = "form-control" %>
+    <% shop_visit_was_invalid = service.errors.include?(:shop_visit) %>
+
+    <% if was_validated %>
+      <% if shop_visit_was_invalid %>
+        <% shop_visit_class << " is-invalid" %>
+      <% else %>
+        <% shop_visit_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :shop_visit %>
+
+    <%= f.text_field :shop_visit, class: shop_visit_class, placeholder: "Enter shop visit" %>
+    <% if shop_visit_was_invalid %>
+      <% service.errors.full_messages_for(:shop_visit).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
+  <%= f.button class: "btn btn-outline-secondary btn-block" %>
+<% end %>

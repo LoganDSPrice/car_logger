@@ -1,0 +1,151 @@
+<% was_validated = shop.errors.any? %>
+
+<% form_html_options = { novalidate: true, class: "mb-3" } %>
+
+<%= form_for(shop, html: form_html_options) do |f| %>
+  <div class="form-group">
+    <% name_class = "form-control" %>
+    <% name_was_invalid = shop.errors.include?(:name) %>
+
+    <% if was_validated %>
+      <% if name_was_invalid %>
+        <% name_class << " is-invalid" %>
+      <% else %>
+        <% name_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :name %>
+
+    <%= f.text_field :name, class: name_class, placeholder: "Enter name" %>
+    <% if name_was_invalid %>
+      <% shop.errors.full_messages_for(:name).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="form-group">
+    <% street_address_class = "form-control" %>
+    <% street_address_was_invalid = shop.errors.include?(:street_address) %>
+
+    <% if was_validated %>
+      <% if street_address_was_invalid %>
+        <% street_address_class << " is-invalid" %>
+      <% else %>
+        <% street_address_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :street_address %>
+
+    <%= f.text_field :street_address, class: street_address_class, placeholder: "Enter street address" %>
+    <% if street_address_was_invalid %>
+      <% shop.errors.full_messages_for(:street_address).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="form-group">
+    <% city_class = "form-control" %>
+    <% city_was_invalid = shop.errors.include?(:city) %>
+
+    <% if was_validated %>
+      <% if city_was_invalid %>
+        <% city_class << " is-invalid" %>
+      <% else %>
+        <% city_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :city %>
+
+    <%= f.text_field :city, class: city_class, placeholder: "Enter city" %>
+    <% if city_was_invalid %>
+      <% shop.errors.full_messages_for(:city).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="form-group">
+    <% state_class = "form-control" %>
+    <% state_was_invalid = shop.errors.include?(:state) %>
+
+    <% if was_validated %>
+      <% if state_was_invalid %>
+        <% state_class << " is-invalid" %>
+      <% else %>
+        <% state_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :state %>
+
+    <%= f.text_field :state, class: state_class, placeholder: "Enter state" %>
+    <% if state_was_invalid %>
+      <% shop.errors.full_messages_for(:state).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="form-group">
+    <% zip_code_class = "form-control" %>
+    <% zip_code_was_invalid = shop.errors.include?(:zip_code) %>
+
+    <% if was_validated %>
+      <% if zip_code_was_invalid %>
+        <% zip_code_class << " is-invalid" %>
+      <% else %>
+        <% zip_code_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :zip_code %>
+
+    <%= f.number_field :zip_code, class: zip_code_class, placeholder: "Enter zip code" %>
+    <% if zip_code_was_invalid %>
+      <% shop.errors.full_messages_for(:zip_code).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="form-group">
+    <% phone_number_class = "form-control" %>
+    <% phone_number_was_invalid = shop.errors.include?(:phone_number) %>
+
+    <% if was_validated %>
+      <% if phone_number_was_invalid %>
+        <% phone_number_class << " is-invalid" %>
+      <% else %>
+        <% phone_number_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :phone_number %>
+
+    <%= f.text_field :phone_number, class: phone_number_class, placeholder: "Enter phone number" %>
+    <% if phone_number_was_invalid %>
+      <% shop.errors.full_messages_for(:phone_number).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
+  <%= f.button class: "btn btn-outline-secondary btn-block" %>
+<% end %>

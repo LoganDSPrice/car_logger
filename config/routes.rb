@@ -1,10 +1,32 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  devise_for :users
+  root "cars#index"
+  resources :cars, only: %i[index new]
+  resources :documents, only: %i[]
+  resources :parts, only: %i[]
+  resources :services, only: %i[]
+  resources :shop_visits, only: %i[]
+  resources :shops, only: %i[]
 end
 
 # == Route Map
 #
 #                                Prefix Verb   URI Pattern                                                                              Controller#Action
+#                      new_user_session GET    /users/sign_in(.:format)                                                                 devise/sessions#new
+#                          user_session POST   /users/sign_in(.:format)                                                                 devise/sessions#create
+#                  destroy_user_session DELETE /users/sign_out(.:format)                                                                devise/sessions#destroy
+#                     new_user_password GET    /users/password/new(.:format)                                                            devise/passwords#new
+#                    edit_user_password GET    /users/password/edit(.:format)                                                           devise/passwords#edit
+#                         user_password PATCH  /users/password(.:format)                                                                devise/passwords#update
+#                                       PUT    /users/password(.:format)                                                                devise/passwords#update
+#                                       POST   /users/password(.:format)                                                                devise/passwords#create
+#              cancel_user_registration GET    /users/cancel(.:format)                                                                  devise/registrations#cancel
+#                 new_user_registration GET    /users/sign_up(.:format)                                                                 devise/registrations#new
+#                edit_user_registration GET    /users/edit(.:format)                                                                    devise/registrations#edit
+#                     user_registration PATCH  /users(.:format)                                                                         devise/registrations#update
+#                                       PUT    /users(.:format)                                                                         devise/registrations#update
+#                                       DELETE /users(.:format)                                                                         devise/registrations#destroy
+#                                       POST   /users(.:format)                                                                         devise/registrations#create
 #         rails_mandrill_inbound_emails POST   /rails/action_mailbox/mandrill/inbound_emails(.:format)                                  action_mailbox/ingresses/mandrill/inbound_emails#create
 #         rails_postmark_inbound_emails POST   /rails/action_mailbox/postmark/inbound_emails(.:format)                                  action_mailbox/ingresses/postmark/inbound_emails#create
 #            rails_relay_inbound_emails POST   /rails/action_mailbox/relay/inbound_emails(.:format)                                     action_mailbox/ingresses/relay/inbound_emails#create

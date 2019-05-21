@@ -1,0 +1,50 @@
+<div class="card mb-3">
+  <h2 class="card-header h4">
+    Shop #<%= shop.id %>
+  </h2>
+
+  <div class="card-body">
+    <dl class="mb-1">
+      <dt>Name</dt>
+      <dd><%= shop.name %></dd>
+
+      <dt>Street address</dt>
+      <dd><%= shop.street_address %></dd>
+
+      <dt>City</dt>
+      <dd><%= shop.city %></dd>
+
+      <dt>State</dt>
+      <dd><%= shop.state %></dd>
+
+      <dt>Zip code</dt>
+      <dd><%= shop.zip_code %></dd>
+
+      <dt>Phone number</dt>
+      <dd><%= shop.phone_number %></dd>
+
+    </dl>
+
+    <div class="row">
+      <div class="col">
+        <%= link_to_show_or_back shop, '<i class="fas fa-search-plus"></i>'.html_safe, '<i class="fas fa-chevron-left"></i>'.html_safe, class: "btn btn-block btn-outline-secondary" %>
+      </div>
+
+      <div class="col">
+        <%= link_to edit_shop_url(shop), class: "btn btn-block btn-outline-secondary" do %>
+          <i class="fas fa-edit"></i>
+        <% end %>
+      </div>
+
+      <div class="col">
+        <%= link_to shop, method: :delete, data: { confirm: "Do you really want to delete this shop?" }, class: "btn btn-block btn-outline-secondary" do %>
+          <i class="fas fa-trash-alt"></i>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="card-footer text-muted">
+    Last updated <%= time_ago_in_words(shop.updated_at) %> ago
+  </div>
+</div>

@@ -1,0 +1,41 @@
+<tr>
+  <td>
+    <%= shop_visit.date %>
+  </td>
+
+  <td>
+    <%= shop_visit.starts_on %>
+  </td>
+
+  <td>
+    <%= shop_visit.ends_on %>
+  </td>
+
+  <td>
+    <%= shop_visit.miles %>
+  </td>
+
+  <td>
+    <%= shop_visit.car %>
+  </td>
+
+  <td>
+    <%= shop_visit.shop %>
+  </td>
+
+  <td>
+    <div class="btn-group">
+      <%= link_to shop_visit, class: "btn btn-sm btn-outline-secondary" do %>
+        <i class="fas fa-search-plus fa-fw"></i>
+      <% end %>
+
+      <%= link_to edit_shop_visit_url(shop_visit), class: "btn btn-sm btn-outline-secondary" do %>
+        <i class="fas fa-edit fa-fw"></i>
+      <% end %>
+
+      <%= link_to shop_visit, method: :delete, data: { confirm: "Do you really want to delete this shop_visit?" }, class: "btn btn-sm btn-outline-secondary" do %>
+        <i class="fas fa-trash-alt fa-fw"></i>
+      <% end %>
+    </div>
+  </td>
+</tr>

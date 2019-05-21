@@ -1,0 +1,37 @@
+<tr>
+  <td>
+    <%= service.cost %>
+  </td>
+
+  <td>
+    <%= service.description %>
+  </td>
+
+  <td>
+    <%= service.notes %>
+  </td>
+
+  <td>
+    <%= service.part %>
+  </td>
+
+  <td>
+    <%= service.shop_visit %>
+  </td>
+
+  <td>
+    <div class="btn-group">
+      <%= link_to service, class: "btn btn-sm btn-outline-secondary" do %>
+        <i class="fas fa-search-plus fa-fw"></i>
+      <% end %>
+
+      <%= link_to edit_service_url(service), class: "btn btn-sm btn-outline-secondary" do %>
+        <i class="fas fa-edit fa-fw"></i>
+      <% end %>
+
+      <%= link_to service, method: :delete, data: { confirm: "Do you really want to delete this service?" }, class: "btn btn-sm btn-outline-secondary" do %>
+        <i class="fas fa-trash-alt fa-fw"></i>
+      <% end %>
+    </div>
+  </td>
+</tr>

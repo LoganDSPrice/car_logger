@@ -1,0 +1,151 @@
+<% was_validated = shop_visit.errors.any? %>
+
+<% form_html_options = { novalidate: true, class: "mb-3" } %>
+
+<%= form_for(shop_visit, html: form_html_options) do |f| %>
+  <div class="form-group">
+    <% date_class = "form-control" %>
+    <% date_was_invalid = shop_visit.errors.include?(:date) %>
+
+    <% if was_validated %>
+      <% if date_was_invalid %>
+        <% date_class << " is-invalid" %>
+      <% else %>
+        <% date_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :date %>
+
+    <%= f.date_select :date, class: date_class, placeholder: "Enter date" %>
+    <% if date_was_invalid %>
+      <% shop_visit.errors.full_messages_for(:date).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="form-group">
+    <% starts_on_class = "form-control" %>
+    <% starts_on_was_invalid = shop_visit.errors.include?(:starts_on) %>
+
+    <% if was_validated %>
+      <% if starts_on_was_invalid %>
+        <% starts_on_class << " is-invalid" %>
+      <% else %>
+        <% starts_on_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :starts_on %>
+
+    <%= f.date_select :starts_on, class: starts_on_class, placeholder: "Enter starts on" %>
+    <% if starts_on_was_invalid %>
+      <% shop_visit.errors.full_messages_for(:starts_on).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="form-group">
+    <% ends_on_class = "form-control" %>
+    <% ends_on_was_invalid = shop_visit.errors.include?(:ends_on) %>
+
+    <% if was_validated %>
+      <% if ends_on_was_invalid %>
+        <% ends_on_class << " is-invalid" %>
+      <% else %>
+        <% ends_on_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :ends_on %>
+
+    <%= f.date_select :ends_on, class: ends_on_class, placeholder: "Enter ends on" %>
+    <% if ends_on_was_invalid %>
+      <% shop_visit.errors.full_messages_for(:ends_on).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="form-group">
+    <% miles_class = "form-control" %>
+    <% miles_was_invalid = shop_visit.errors.include?(:miles) %>
+
+    <% if was_validated %>
+      <% if miles_was_invalid %>
+        <% miles_class << " is-invalid" %>
+      <% else %>
+        <% miles_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :miles %>
+
+    <%= f.number_field :miles, class: miles_class, placeholder: "Enter miles" %>
+    <% if miles_was_invalid %>
+      <% shop_visit.errors.full_messages_for(:miles).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="form-group">
+    <% car_class = "form-control" %>
+    <% car_was_invalid = shop_visit.errors.include?(:car) %>
+
+    <% if was_validated %>
+      <% if car_was_invalid %>
+        <% car_class << " is-invalid" %>
+      <% else %>
+        <% car_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :car %>
+
+    <%= f.text_field :car, class: car_class, placeholder: "Enter car" %>
+    <% if car_was_invalid %>
+      <% shop_visit.errors.full_messages_for(:car).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="form-group">
+    <% shop_class = "form-control" %>
+    <% shop_was_invalid = shop_visit.errors.include?(:shop) %>
+
+    <% if was_validated %>
+      <% if shop_was_invalid %>
+        <% shop_class << " is-invalid" %>
+      <% else %>
+        <% shop_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :shop %>
+
+    <%= f.text_field :shop, class: shop_class, placeholder: "Enter shop" %>
+    <% if shop_was_invalid %>
+      <% shop_visit.errors.full_messages_for(:shop).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
+  <%= f.button class: "btn btn-outline-secondary btn-block" %>
+<% end %>
