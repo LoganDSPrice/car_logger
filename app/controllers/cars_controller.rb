@@ -3,7 +3,7 @@ class CarsController < ApplicationController
 
   # GET /cars
   def index
-    @cars = Car.all
+    @cars = current_user.cars
   end
 
   # GET /cars/1
@@ -20,7 +20,7 @@ class CarsController < ApplicationController
   # POST /cars
   def create
     @car = Car.new(car_params)
-
+    @car.user = current_user
     if @car.save
       redirect_to @car, notice: "Car was successfully created."
     else
@@ -52,6 +52,6 @@ class CarsController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def car_params
-    params.require(:car).permit(:name, :make, :model, :year, :user_id)
+    params.require(:car).permit(:name, :make, :model, :year)
   end
 end

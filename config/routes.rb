@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   root "cars#index"
-  resources :cars, only: %i[index new]
+  resources :cars, only: %i[index new create show edit]
   resources :documents, only: %i[]
   resources :parts, only: %i[]
   resources :services, only: %i[]
@@ -27,10 +27,14 @@ end
 #                                       PUT    /users(.:format)                                                                         devise/registrations#update
 #                                       DELETE /users(.:format)                                                                         devise/registrations#destroy
 #                                       POST   /users(.:format)                                                                         devise/registrations#create
-#         rails_mandrill_inbound_emails POST   /rails/action_mailbox/mandrill/inbound_emails(.:format)                                  action_mailbox/ingresses/mandrill/inbound_emails#create
+#                                  root GET    /                                                                                        cars#index
+#                                  cars GET    /cars(.:format)                                                                          cars#index
+#                               new_car GET    /cars/new(.:format)                                                                      cars#new
 #         rails_postmark_inbound_emails POST   /rails/action_mailbox/postmark/inbound_emails(.:format)                                  action_mailbox/ingresses/postmark/inbound_emails#create
 #            rails_relay_inbound_emails POST   /rails/action_mailbox/relay/inbound_emails(.:format)                                     action_mailbox/ingresses/relay/inbound_emails#create
 #         rails_sendgrid_inbound_emails POST   /rails/action_mailbox/sendgrid/inbound_emails(.:format)                                  action_mailbox/ingresses/sendgrid/inbound_emails#create
+#   rails_mandrill_inbound_health_check GET    /rails/action_mailbox/mandrill/inbound_emails(.:format)                                  action_mailbox/ingresses/mandrill/inbound_emails#health_check
+#         rails_mandrill_inbound_emails POST   /rails/action_mailbox/mandrill/inbound_emails(.:format)                                  action_mailbox/ingresses/mandrill/inbound_emails#create
 #          rails_mailgun_inbound_emails POST   /rails/action_mailbox/mailgun/inbound_emails/mime(.:format)                              action_mailbox/ingresses/mailgun/inbound_emails#create
 #        rails_conductor_inbound_emails GET    /rails/conductor/action_mailbox/inbound_emails(.:format)                                 rails/conductor/action_mailbox/inbound_emails#index
 #                                       POST   /rails/conductor/action_mailbox/inbound_emails(.:format)                                 rails/conductor/action_mailbox/inbound_emails#create
