@@ -3,11 +3,6 @@
   "scripts": {
     "postdeploy": "bundle exec rails db:migrate && bundle exec rails db:seed"
   },
-  "env": {
-    "FONTAWESOME_NPM_AUTH_TOKEN": {
-      "required": true
-    }
-  },
   "formation": {
     "web": {
       "quantity": 1
